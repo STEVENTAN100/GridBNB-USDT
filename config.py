@@ -4,8 +4,8 @@ import logging
 
 load_dotenv()
 
-SYMBOL = 'BNB/USDT'
-INITIAL_GRID = 2.0
+SYMBOL = 'BNB/USDC'
+INITIAL_GRID = 0.8
 FLIP_THRESHOLD = lambda grid_size: (grid_size / 5) / 100  # 网格大小的1/5的1%
 POSITION_SCALE_FACTOR = 0.2  # 仓位调整系数（20%）
 MIN_TRADE_AMOUNT = 20.0  # 新下限
@@ -51,11 +51,11 @@ class TradingConfig:
     }
     GRID_PARAMS = {
         'initial': INITIAL_GRID,
-        'min': 1.0,
+        'min': 0.8,
         'max': 4.0,
         'volatility_threshold': {
             'ranges': [
-                {'range': [0, 0.20], 'grid': 1.0},     # 波动率 0-20%，网格1.0%
+                {'range': [0, 0.20], 'grid': 0.8},     # 波动率 0-20%，网格1.0%
                 {'range': [0.20, 0.40], 'grid': 1.5},  # 波动率 20-40%，网格1.5%
                 {'range': [0.40, 0.60], 'grid': 2.0},  # 波动率 40-60%，网格2.0%
                 {'range': [0.60, 0.80], 'grid': 2.5},  # 波动率 60-80%，网格2.5%

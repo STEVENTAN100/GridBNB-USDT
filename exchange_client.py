@@ -279,7 +279,7 @@ class ExchangeClient:
             product_id = await self.get_flexible_product_id(asset)
             
             # 格式化金额，确保精度正确
-            if asset == 'USDT':
+            if asset == 'USDC':
                 formatted_amount = "{:.2f}".format(float(amount))
             elif asset == 'BNB':
                 formatted_amount = "{:.8f}".format(float(amount))
@@ -313,8 +313,8 @@ class ExchangeClient:
             product_id = await self.get_flexible_product_id(asset)
             
             # 格式化金额，确保精度正确
-            if asset == 'USDT':
-                formatted_amount = "{:.2f}".format(float(amount))  # USDT保留2位小数
+            if asset == 'USDC':
+                formatted_amount = "{:.2f}".format(float(amount))  # USDC保留2位小数
             elif asset == 'BNB':
                 formatted_amount = "{:.8f}".format(float(amount))  # BNB保留8位小数
             else:

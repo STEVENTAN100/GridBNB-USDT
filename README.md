@@ -1,10 +1,10 @@
-# BNB/USDT 自动化网格交易机器人
+# BNB/USDC 自动化网格交易机器人
 
-这是一个基于 Python 的自动化交易程序，专为币安 (Binance) 交易所的 BNB/USDT 交易对设计。该程序采用网格交易策略，旨在通过动态调整网格和仓位来捕捉市场波动，并内置风险管理机制。
+这是一个基于 Python 的自动化交易程序，专为币安 (Binance) 交易所的 BNB/USDC 交易对设计。该程序采用网格交易策略，旨在通过动态调整网格和仓位来捕捉市场波动，并内置风险管理机制。
 
 ## 核心功能
 
-*   **自动化网格交易**: 针对 BNB/USDT 交易对执行网格买卖策略。
+*   **自动化网格交易**: 针对 BNB/USDC 交易对执行网格买卖策略。
 *   **动态网格调整**: 根据市场波动率自动调整网格大小 (`config.py` 中的 `GRID_PARAMS`)。
 *   **风险管理**:
     *   最大回撤限制 (`MAX_DRAWDOWN`)
@@ -31,8 +31,8 @@
 
 1.  **克隆仓库**:
     ```bash
-    git clone https://github.com/EBOLABOY/GridBNB-USDT
-    cd GridBNB-USDT
+    git clone https://github.com/EBOLABOY/GridBNB-USDC
+    cd GridBNB-USDC
     ```
 
 2.  **创建并激活虚拟环境**:
@@ -69,16 +69,16 @@
 
     # 初始设置 (可选, 影响首次运行和统计)
     # 如不设置，INITIAL_PRINCIPAL 和 INITIAL_BASE_PRICE 默认为 0
-    INITIAL_PRINCIPAL=1000.0  # 你的初始总资产 (USDT)
+    INITIAL_PRINCIPAL=1000.0  # 你的初始总资产 (USDC)
     INITIAL_BASE_PRICE=600.0   # 你认为合适的初始基准价格 (用于首次启动确定方向)
     ```
     *   **重要**: 确保你的币安 API Key 具有现货交易权限，但**不要**开启提现权限。
 
 3.  **调整交易参数 (可选)**:
     你可以根据自己的策略需求修改 `config.py` 文件中的参数，例如：
-    *   `SYMBOL`: 交易对 (默认为 'BNB/USDT')
+    *   `SYMBOL`: 交易对 (默认为 'BNB/USDC')
     *   `INITIAL_GRID`: 初始网格大小 (%)
-    *   `MIN_TRADE_AMOUNT`: 最小交易金额 (USDT)
+    *   `MIN_TRADE_AMOUNT`: 最小交易金额 (USDC)
     *   `MAX_POSITION_RATIO`, `MIN_POSITION_RATIO`: 最大/最小仓位比例
     *   风险参数 (`MAX_DRAWDOWN`, `DAILY_LOSS_LIMIT`)
     *   波动率与网格对应关系 (`GRID_PARAMS['volatility_threshold']`)
@@ -101,8 +101,8 @@ python main.py
 ```bash
 # 拉取代码
 #（如已在上方步骤完成可跳过）
-git clone https://github.com/EBOLABOY/GridBNB-USDT
-cd GridBNB-USDT
+git clone https://github.com/EBOLABOY/GridBNB-USDC
+cd GridBNB-USDC
 # 部署镜像
 docker-compose up -d
 ```

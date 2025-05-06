@@ -55,20 +55,20 @@ class AdvancedRiskManager:
             balance = await self.trader.exchange.fetch_balance()
             funding_balance = await self.trader.exchange.fetch_funding_balance()
             
-            usdt_balance = (
-                float(balance.get('free', {}).get('USDT', 0)) +
-                float(funding_balance.get('USDT', 0))
+            usdc_balance = (
+                float(balance.get('free', {}).get('USDC', 0)) +
+                float(funding_balance.get('USDC', 0))
             )
             
-            total_assets = position_value + usdt_balance
+            total_assets = position_value + usdc_balance
             if total_assets == 0:
                 return 0
                 
             ratio = position_value / total_assets
             self.logger.debug(
                 f"仓位计算 | "
-                f"BNB价值: {position_value:.2f} USDT | "
-                f"USDT余额: {usdt_balance:.2f} | "
+                f"BNB价值: {position_value:.2f} USDC | "
+                f"USDC余额: {usdc_balance:.2f} | "
                 f"总资产: {total_assets:.2f} | "
                 f"仓位比例: {ratio:.2%}"
             )

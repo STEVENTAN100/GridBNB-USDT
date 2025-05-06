@@ -30,9 +30,9 @@ def format_trade_message(side, symbol, price, amount, total, grid_size, retry_co
     message = f"""
 {direction_emoji} {direction_text} {symbol}
 ━━━━━━━━━━━━━━━━━━━━
-💰 价格：{price:.2f} USDT
+💰 价格：{price:.2f} USDC
 📊 数量：{amount:.4f} BNB
-💵 金额：{total:.2f} USDT
+💵 金额：{total:.2f} USDC
 📈 网格：{grid_size}%
 """
     

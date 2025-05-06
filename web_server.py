@@ -133,7 +133,7 @@ async def handle_log(request):
                                 <span class="status-value" id="base-price">--</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>当前价格 (USDT)</span>
+                                <span>当前价格 (USDC)</span>
                                 <span class="status-value" id="current-price">--</span>
                             </div>
                             <div class="flex justify-between pt-2 border-t mt-2">
@@ -159,11 +159,11 @@ async def handle_log(request):
                                 <span class="status-value" id="grid-size">--</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>当前上轨 (USDT)</span>
+                                <span>当前上轨 (USDC)</span>
                                 <span class="status-value" id="grid-upper-band">--</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>当前下轨 (USDT)</span>
+                                <span>当前下轨 (USDC)</span>
                                 <span class="status-value" id="grid-lower-band">--</span>
                             </div>    
                             <div class="flex justify-between">
@@ -181,19 +181,19 @@ async def handle_log(request):
                         <h2 class="text-lg font-semibold mb-4">资金状况</h2>
                         <div class="space-y-2">
                             <div class="flex justify-between">
-                                <span>总资产(USDT)</span>
+                                <span>总资产(USDC)</span>
                                 <span class="status-value" id="total-assets">--</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>USDT余额</span>
-                                <span class="status-value" id="usdt-balance">--</span>
+                                <span>USDC余额</span>
+                                <span class="status-value" id="usdc-balance">--</span>
                             </div>
                             <div class="flex justify-between">
                                 <span>BNB余额</span>
                                 <span class="status-value" id="bnb-balance">--</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>总盈亏(USDT)</span>
+                                <span>总盈亏(USDC)</span>
                                 <span class="status-value" id="total-profit">--</span>
                             </div>
                             <div class="flex justify-between">
@@ -233,7 +233,7 @@ async def handle_log(request):
                                     <th class="text-left py-2">方向</th>
                                     <th class="text-left py-2">价格</th>
                                     <th class="text-left py-2">数量</th>
-                                    <th class="text-left py-2">金额(USDT)</th>
+                                    <th class="text-left py-2">金额(USDC)</th>
                                 </tr>
                             </thead>
                             <tbody id="trade-history">
@@ -290,7 +290,7 @@ async def handle_log(request):
                         
                         // 更新基本信息
                         document.querySelector('#base-price').textContent = 
-                            data.base_price ? data.base_price.toFixed(2) + ' USDT' : '--';
+                            data.base_price ? data.base_price.toFixed(2) + ' USDC' : '--';
                         
                         // 更新当前价格
                         document.querySelector('#current-price').textContent = 
@@ -318,9 +318,9 @@ async def handle_log(request):
                         
                         // 更新资金状况
                         document.querySelector('#total-assets').textContent = 
-                            data.total_assets ? data.total_assets.toFixed(2) + ' USDT' : '--';
-                        document.querySelector('#usdt-balance').textContent = 
-                            data.usdt_balance != null ? data.usdt_balance.toFixed(2) : '--';
+                            data.total_assets ? data.total_assets.toFixed(2) + ' USDC' : '--';
+                        document.querySelector('#usdc-balance').textContent = 
+                            data.usdc_balance != null ? data.usdc_balance.toFixed(2) : '--';
                         document.querySelector('#bnb-balance').textContent = 
                             data.bnb_balance != null ? data.bnb_balance.toFixed(4) : '--';
                         
@@ -348,7 +348,7 @@ async def handle_log(request):
                         
                         // 更新目标委托金额
                         document.querySelector('#target-order-amount').textContent = 
-                            data.target_order_amount ? data.target_order_amount.toFixed(2) + ' USDT' : '--';
+                            data.target_order_amount ? data.target_order_amount.toFixed(2) + ' USDC' : '--';
                         
                         console.log('状态更新成功:', data);
                     }} catch (error) {{
@@ -402,8 +402,8 @@ async def handle_status(request):
         
         # 计算总资产
         bnb_balance = float(balance['total'].get('BNB', 0))
-        usdt_balance = float(balance['total'].get('USDT', 0))
-        total_assets = usdt_balance + (bnb_balance * current_price)
+        usdc_balance = float(balance['total'].get('USDC', 0))
+        total_assets = usdc_balance + (bnb_balance * current_price)
         
         # 计算总盈亏和盈亏率
         initial_principal = trader.config.INITIAL_PRINCIPAL
@@ -450,7 +450,7 @@ async def handle_status(request):
             "grid_size": grid_size_decimal,
             "threshold": threshold,
             "total_assets": total_assets,
-            "usdt_balance": usdt_balance,
+            "usdc_balance": usdc_balance,
             "bnb_balance": bnb_balance,
             "target_order_amount": target_order_amount,
             "trade_history": trade_history or [],
